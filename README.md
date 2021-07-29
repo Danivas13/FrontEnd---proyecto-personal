@@ -8,4 +8,4 @@ Este sitio lo venia pensando desarrollar mas adelante y esto por ahora es solo e
 https://danivas13.github.io/FrontEnd---proyecto-personal/Siracusa/inicio.html
 
 
-<img src="demo.PNG" />
+<img src="danivas13.github.io_FrontEnd---proyecto-personal_Siracusa_inicio.html.PNG" />
