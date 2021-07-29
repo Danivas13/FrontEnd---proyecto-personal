@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Siracusa</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#fafafa">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#fafafa">
+	<meta name="msapplication-navbutton-color" content="#fafafa">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- PLUGINS -->
+	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+	<!-- END PLUGGINS -->
+	<style type="text/css">
+
+		body{
+			margin: 0;
+			padding: 0;
+			/* min-width: 850px; */
+			font-family: Segoe UI,Arial;
+			padding-bottom: 100px;
+			background: #eee;
+		}
+		.menu{
+			position: absolute;
+			top: 47px;
+			left:0;
+			background: #fff;
+			width: 100%;
+			height: 80px;
+			max-width: 970px;
+			padding: 0;
+			z-index: 600;
+			display: table;
+			 display: flex;
+			 box-shadow: 0 4px 4px 0 rgba(0,0,0,.1);
+			 -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -khtml-user-select: none;
+		    -ms-user-select:none;
+		    font-weight: 200;
+		    letter-spacing: 1;
+		}
+		
+		.menu .binicio{
+			width: 190px;
+			min-width: 60px;
+			height: 100%;
+			text-align: center;
+			cursor: pointer;
+			display: table-cell;
+			vertical-align: middle;
+			padding-top: 25px;
+			padding-bottom: 10px;
+			box-sizing: border-box;
+			line-height: 30px;
+			letter-spacing: 0;
+			margin-right: 5px;
+		}
+		.menu .binicio .partner{
+		    height: 30px;
+		    display: inline-block;
+		    margin-left: auto;
+		    margin-right: auto;
+		    font-size: 0.9em;
+		    font-weight: 200;
+		    color: #000;
+		    background: rgb(255, 246, 33);
+		    border-radius: 10px;
+		    padding-left: 10px;
+		    box-sizing: border-box;
+		    padding-right: 10px;
+		}
+		.partner::before{
+			background: url(user.svg);
+		    background-size: 100%;
+		    background-repeat: no-repeat;
+		    background-position: center;
+		    content: "";
+		    display: block;
+		    width: 18px;
+		    height: 100%;
+		    float: left;
+		    margin-right: 5px;
+		}
+		.menu .binicio .icono img{
+			width: 30px;
+			height: 100%;
+			box-sizing: border-box;
+		}
+		.menu .tinbuscar{
+			font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+			margin-right: 10px;
+			padding-top: 15px;
+   			padding-bottom: 32px;
+			height: 100%;
+			text-align: left;
+			padding-left: 10px;
+			flex: 1 1 auto;
+			display: table-cell;
+			box-sizing: border-box;
+			font-size: 0.85em;
+		}
+		.tinbuscar input{
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+			max-height: 61px;
+			background: url(search.svg), #f1f3f4;
+			background-size: 75px 25px;
+   			background-position: right;
+			background-repeat: no-repeat;
+			border: none;
+			padding: 20px;
+			box-sizing: border-box;
+			font-size: 1.1em;
+			color: #707070;
+			padding-left: 40px;
+			border-radius: 50px;
+		}
+		
+		/*.tinbuscar::after {
+		    content: '';
+		    display: block;
+		    width: 0;
+		    height: 2px;
+		    margin-top: 0px;
+		    background: #ffb92d;
+		    transition: width .5s;
+		    margin-left: 8%;
+		}
+		.tinbuscar:hover::after {
+    		/*width: 84%;	
+    		box-sizing: content-box; */
+    	}/*/*/
+    	
+    	.tinbuscarbackup{
+    		width: 0; height: 0; margin: 0; padding: 0;
+    	}
+    	.tinbuscarbackup::after {
+    		width: 0;	
+    		box-sizing: content-box;
+    		 content: '';
+		    display: block;
+		    height: 3px;
+		    margin-top: 0px;
+		    background: #ffb92d;
+		    transition: width .5s;
+		    margin-left: 8%;
+    	}
+    	.tinbuscar input:focus ~ span::after{
+			width: 84%!important;
+		}
+		.tinbuscar input:hover ~ span::after{
+			width: 84%!important;
+		}
+		.tinbuscar input:valid ~ span::after{
+			width: 84%!important;
+		}
+		.tinbuscar input:active, .tinbuscar input:focus{
+			outline: 0px;
+		}
+
+
+		.menu .wlogo{
+			
+			height: 100%;
+			border: none;
+			line-height: 80px;
+			text-align: center;
+			cursor: pointer;
+			display: table-cell;
+			box-sizing: border-box;
+			padding: 8px;
+		}
+		.menu .wlogo img{
+			height: 100%;
+		}
+		.principal{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: #8589A6;
+		}
+		.principal img{
+			display: none;
+		}
+		.arbol{
+			position: absolute;
+			z-index: 2;
+			width: 100%;
+			top: 100%;
+		}
+		.arbol .seguidos{
+			text-align: center;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			margin-left: 5px;
+			margin-right: 5px;
+			box-sizing: border-box;
+		}
+		.arbol .seguidos h2{
+			font-weight: normal;
+			font-size: 2.2em;
+			margin-bottom: 5px;
+		}
+		.arbol .seguidos .fmore{
+		    background: #fff;
+		    color: #434343;
+		    
+		    padding: 20px;
+		    max-width: 300px;
+		    margin-right: auto;
+		    margin-left: auto;
+		    cursor: pointer;
+		    padding-left: 42px;
+		    box-sizing: border-box;
+		    letter-spacing: 1px;
+		    font-weight: 300;
+		    font-size: 1.20em;
+		    display: inline-block;
+		    padding-top: 10px;
+		    padding-bottom: 10px;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -khtml-user-select: none;
+		    -ms-user-select:none;
+		    border-radius: 5px;
+		}
+
+		.arbol .seguidos .fmore:hover:after, .arbol .seguidos .fmore:hover:before{
+			opacity: 1;
+		}
+		.arbol .seguidos .fmore:after, .arbol .seguidos .fmore:before{
+			opacity: 0;
+		}
+		.arbol .seguidos .fless{
+			font-weight: normal;
+			font-size: 1em;
+			cursor: pointer;
+			display: inline-block;
+			margin-left: auto; margin-right: auto;
+			border: solid 1px #555;
+			padding: 19px;
+			margin-bottom: 20px;
+			letter-spacing: 1px;
+		}
+		.arbol .seguidos .fless:hover{
+			border: solid 1px #000;
+			padding: 19px;
+			background: #eee;
+		}
+		.arbol .seguidos .flesscon{
+			padding: 15px;
+			text-align: left;
+		}
+		.arbol .piedepagina{
+			width: 100%;
+			position: absolute;
+			box-sizing: border-box;
+			background: #fff;
+			text-align: center;
+			margin-top: 50px;
+			padding-bottom: 50px;
+			padding-top: 50px;
+			/*background: url(footbackpng.png);*/
+			background-size: cover;
+			background-position: bottom;
+			background-repeat: no-repeat;
+			background-color: rgba(255,255,255,0.5);
+		}
+		.arbol .piedepagina h2,h3{
+			font-weight: 200;
+			font-size: 3em;
+			margin-bottom: 5px;
+			margin-top: 15px;
+			letter-spacing: 3px;
+			color: #1c1c1c;
+		}
+		.arbol .piedepagina h3{
+			font-size: 2em;
+		}
+		.piedepagina .z{
+			width: 49.5%;
+			display: inline-block;
+			box-sizing: content-box;
+			margin: 0;
+			padding-left: 5%;
+			padding-right: 5%;
+			box-sizing: border-box;
+		}
+		.piedepagina .unirse{
+			background: #2dabff;
+		    color: #fff;
+		    border: solid 1px #2dabff;
+		    border-radius: 5px;
+		    padding: 20px;
+		    max-width: 300px;
+		    margin-right: auto;
+		    margin-left: auto;
+		    cursor: pointer;
+		    margin-top: 30px;
+		    margin-bottom: 30px;
+		    padding-left: 60px;
+		    box-sizing: border-box;
+		    letter-spacing: 1px;
+		    font-weight: 200;
+		    font-size: 1.25em;
+		}
+		.piedepagina .unirse:hover{
+			border-color: rgba(0,0,0,0);
+			background: #1da2fb;
+		}
+		.deco{
+			display: inline-block;
+		    position: absolute;
+		    left: 0;
+		    height: 100%;
+		    top: 0;
+		    width: 40px;
+		    text-align: center;
+		}
+		.deco img{
+			width: 65%;
+			height: 100%;
+		}
+		.piedepagina .z span{
+			cursor: pointer;
+			margin: 5px;
+			display: inline-block;
+			font-weight: 200;
+			font-size: 1.3em;
+
+		}
+		.piedepagina ul{
+			list-style-type: none;
+		    display: inline-block;
+		    margin-left: auto;
+		    margin-right: auto;
+		    padding-left: 0;
+		}
+		.piedepagina li{
+			text-align: left;
+		}
+		.piedepagina h3{
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+		.piedepagina .z span::after { content: '\A'; white-space: pre;}
+		.piedepagina .z span:hover{
+			text-decoration: underline;
+		}
+		.rama .a .storelogo{
+			width: 50%;
+			margin-left: auto; margin-right: auto;
+			padding-top: 25%;
+		}
+		.storelogo p{
+			margin: 0;
+		}
+
+
+
+
+
+
+
+		.rama{
+			min-height: 500px;
+			box-shadow: 0 0 25px #999;
+			display: table;
+			display: flex;
+			max-width: 1400px;
+			width: 86%;
+		    margin-left: auto;
+		    margin-right: auto;
+		    margin-bottom: 20px;
+		    border-radius: 4px;
+		    overflow: hidden;
+		}
+		.rama .a{
+			display: table-cell;
+			width: 35%;
+			min-width: 360px;
+			vertical-align: middle;
+			text-align: center;
+		}
+		.rama .a .storelogo h2{
+			padding: 2px;
+			font-size: 0.9em;
+		}
+		.rama .a .storelogo .storelogoa{
+			width: 70%;
+
+		}
+		.subramas .storelogo .storelogoa{
+			max-width: 150px;
+			max-height: 150px;
+			margin-top: 10px;
+		}
+		.rama .b{
+			display: table-cell;
+			flex: 1 1 auto;
+			overflow-x: hidden;
+			
+			vertical-align: middle;
+
+		}
+		.despleft{
+			background: blue;
+		    height: 505px;
+		    position: absolute;
+		    margin-left: 10px;
+		    cursor: pointer;
+		    margin-top: 20px;
+		    vertical-align: middle;
+		}
+		.despright{
+			background: red;
+		    height: 505px;
+		    right: 70px;
+		    position: absolute;
+		    margin-right: 10px;
+		    cursor: pointer;
+		    margin-top: 20px;
+		    vertical-align: middle;
+		    z-index: 500;
+		}
+		.despright .btndis, .despleft .btndis{
+			width: 60px;
+			background: rgba(0,0,0,0.8);
+			height: 60px;
+			position: absolute;
+			top: 50%;
+			margin-top: -25px;
+			border-radius: 100%;
+			text-align: center;
+			color: #fff;
+			z-index: 500;
+		}
+		.rama .b .subb{
+			
+		}
+		.rama .b .subb .fruto{
+			float: left;
+			width: 405px;
+			padding: 20px;
+			box-sizing: border-box;
+			display: none;
+		}
+		.rama .b .subb .fruto .producto{
+			background: #ccc;
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+		}
+		.rama .follow{
+			margin: 5px auto 5px auto;
+		    font-weight: bold;
+		    padding: 9px 9px;
+		    border: 2px solid #000;
+		    color: #fff;
+		    font-family: Proxima Nova,sans-serif;
+		    line-height: 1.4;
+		    outline: none;
+		    text-transform: uppercase;
+		    letter-spacing: 0;
+		    background: rgba(0, 0, 0, 0.53);
+		    cursor: pointer;
+		    font-size: 0.7em;
+		    max-width: 120px;
+		    padding-right: 0;
+		}
+		.rama .follow:hover{
+			background: #FF9800;
+			color: #fff;
+			border-color: #FF9800;
+			transition: color .1s ease-out, background .1s ease-out, border-color .1s ease-out;
+		}
+		.rama .follow img{
+			width: 15px;
+		    /* padding-right: 5px; */
+		    position: absolute;
+		    margin-left: -20px;
+		    /* padding-bottom: 10px; */
+		    box-sizing: border-box;
+		}
+		.rama .subramas{
+			display: table-cell;
+		    width: 48.5%;
+		    border-radius: 4px;
+		    overflow: hidden;
+		    vertical-align: middle;
+		    text-align: center;
+		    margin: 1%;
+		    
+		    box-sizing: border-box;
+		}
+		.rama .subramas .c{
+			width: 100%;
+			padding-bottom: 50px;
+			
+			line-height: initial;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.rama .subramas .c .subb{
+			line-height: initial;
+		}
+		.rama .subramas .c .subb .fruto{
+			background: #ddd;
+			width: 260px;
+
+			display: inline-block;
+			text-align: left;
+			float: left;
+			margin: 3px;
+			margin-bottom: 74px;
+			box-sizing: border-box;
+		}
+		.rama .subramas .c .subb .fruto .producto{
+			/* max-width: 180px; */
+			height: 100%;
+		}
+		.rama .fruto .producto img{
+			width: 100%;
+		}
+		.rama .fruto .producto .subtitulo{
+			width: 100%;
+			position: relative;
+			
+			left: 0;
+			background: #ddd;
+			height: 80px;
+			padding: 2%;
+			box-sizing: border-box;
+			text-align: left;
+		}
+		.rama .fruto .producto .subtitulo .proname{
+			font-size: 1.4em;
+
+		}
+		.rama .fruto .producto .subtitulo .proprice{
+			font-size: 1.1em;
+		}
+		#rama1{
+			background: #fff;
+			background: url(backa.jpg);
+			background-size: cover;
+			background-blend-mode: hard-light;
+			background-position: bottom;
+			background-repeat: no-repeat;
+		}
+		#rama2{
+			background: #FFB92D;
+		}
+		
+		#rama3{
+			background: #fff;
+			background: url(backa.jpg);
+			background-size: cover;
+			background-blend-mode: hard-light;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+		#rama4{
+			background: #2DABFF;
+		}
+
+		.principal{
+			height: auto;
+			position: initial;
+			background: #fff;
+			margin-bottom: 0!important;
+		}
+		.arbol{
+			position: initial;
+		}
+		.principal img{
+			width: 100%;
+		}
+		.principal .slick-prev:before, .principal .slick-next:before {
+			color: #fff;	
+		}
+		.principal .slick-prev, .principal .slick-next {
+			top: 80px;
+			margin-top: 20%;
+		}
+		.principal .slick-dots{
+			background: transparent;
+		    padding-bottom: 30px;
+		    margin-top: -60px;
+		    position: inherit;
+		}
+		.principal .slick-dots li button:before{
+			font-family: 'slick';
+		    font-size: 50px;
+		    line-height: 20px;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 20px;
+		    height: 20px;
+		    content: '-';
+		    text-align: center;
+		    opacity: 1;
+		    color: #ccc;
+		    -webkit-font-smoothing: antialiased;
+		}
+		.principal .slick-dots li button:hover:before, .principal .slick-dots li button:focus:hover {
+			outline: none;
+    		color: #fff;
+		}
+		.principal .slick-dots li.slick-active button:before{
+			color: #ffb92d;
+		}
+
+		.historias{
+			width: 100%;
+			padding: 10px;
+			box-sizing: border-box;
+			display: none;
+		}
+		.historia {
+		    display: inline-block;
+		    width: 7em;
+		    height: 7em;
+		    border: solid 1px #555;
+		    margin: 5px;
+		    border-radius: 100%;
+		    cursor: pointer;
+		}
+		/*.plugin_cuenta{
+			position: fixed;
+		    width: 300px;
+		    height: 100%;
+		    top: 0;
+		    right: 0;
+		    border-left: solid 20px rgba(255,255,255,0.5);
+		    background: #fff;
+		    z-index: 888888888;
+		    
+		    padding: 70px 20px 20px 20px;
+		    box-sizing: border-box;
+		    overflow-y: auto;
+		    display: none;
+		    overflow-x: hidden;
+		    cursor: default;
+		    background-clip: padding-box;
+		}
+		.plugin_cuenta h2, .plugin_cuenta p{
+			margin-top: 0;
+			margin-bottom: 0;
+			font-size: 1em;
+		}
+		.plugin_cuenta b{
+			font-weight: 500;
+			display: block;
+			font-size: 0.9em;
+			margin-bottom: 10px;
+		}
+		.plugin_cuenta .bpls{
+			width: 100%;
+			height: 50px;
+			border-radius: 5px;
+			border-radius: 5px;
+			color: #fff;
+		    font-weight: 400;
+		    padding-left: 50px;
+		    padding-top: 15px;
+		    box-sizing: border-box;
+		    cursor: pointer;
+		    border: none;
+			margin-top: 10px;
+			margin-top: 10px;
+			text-shadow: 0px 0px 8px #000;
+			font-size: 1.05em;
+		}
+		.plugin_cuenta > div:first-of-type { 
+			margin-top: 50px;
+		}/*/
+		@media only screen and (min-width: 971px) {
+			.menu{
+				left: 50%;
+				margin-left: -485px;
+			}
+			.fijar{
+				position: fixed;
+				top: 0;
+				z-index: 602;
+			}
+			.tinbuscarbackup::after{
+				height: 4px;
+			}
+		}
+		@media only screen and (max-width: 1000px) {
+			.menu{
+				top: 0;
+			}
+			.principal{
+				margin-top: 60px;
+			}
+		}
+		@media only screen and (min-width: 801px) {
+			.rama .a{
+
+				-webkit-transition: min-width 0.4s, height 1s; /* For Safari 3.1 to 6.0 */
+  				transition: min-width 0.6s, height 1s;
+  				transition-timing-function: linear;
+			}
+			.rama .a .storelogo{
+				-webkit-transition: width 0.4s, padding-top: 0.4s; /* For Safari 3.1 to 6.0 */
+  				transition: width 0.6s, padding-top: 0.4;
+  				transition-timing-function: linear;
+			}
+			.rama .a p, .rama .a h2{
+				visibility: visible;
+				-webkit-transition: visibility 0s; /* For Safari 3.1 to 6.0 */
+				transition: visibility 0s;
+				-webkit-transition-delay: 0.6s; /* For Safari 3.1 to 6.0 */
+				transition-delay: 0.6s;
+				height: auto;
+				transition-timing-function: linear;
+			}
+			.minimizar .a{
+				min-width: 150px;
+				justify-content: center;
+				flex-direction: column;
+				text-align: center;
+				display: flex;
+				-webkit-transition: min-width 0.4s, height 1s; /* For Safari 3.1 to 6.0 */
+  				transition: min-width 0.4s, height 1s;
+  				transition-timing-function: linear;
+			}
+			.minimizar .a p, .minimizar .a h2{
+				height: 0;
+				visibility: hidden;
+				-webkit-transition: visibility 0s!important;
+				transition: visibility 0s!important;
+				-webkit-transition-delay: 0s!important;
+				transition-delay: 0s!important;
+				transition-timing-function: linear;
+			}
+			.minimizar .a .storelogo{
+				width: 90%;
+				padding-top: 0;
+				-webkit-transition: width 0.4s, padding-top: 0.4s; /* For Safari 3.1 to 6.0 */
+  				transition: width 0.4s, padding-top: 0.4;
+  				transition-timing-function: linear;
+			}
+
+		}
+		@media only screen and (max-width: 800px) {
+			
+			.menu .binicio .icono{
+				margin-left: auto;
+			    margin-right: auto;
+			    float: none;
+			}
+			.principal{
+				margin-top: 60px;
+			}
+			.rama{
+				margin-bottom: 3px;
+		    	border-radius: 0;
+		    	width: 100%;
+		    	box-shadow: 0 0 3px #999;
+			}
+			.menu{
+				position: fixed;
+				top: 0;
+			}
+			.follow img{
+				padding-right: 0!important;
+				padding-bottom: 0!important;
+				margin-left: -20px!important;
+				margin-right: 0!important;
+				display: block!important;
+			}
+			.menu .tinbuscar{
+				padding-top: 15px;
+    			padding-bottom: 15px;
+    			margin-top: 0;
+			}
+		}
+		@media only screen and (max-width: 715px) {
+			.arbol .rama{
+				display: initial;
+				border-radius: 5px;
+				margin-top: 4px;
+			}
+			.rama .a, .rama .b{
+				display: initial;
+				width: 100%;
+				text-align: center;
+			}
+			.rama .follow{
+			    float: right;
+			    position: absolute;
+			    margin-top: -100px;
+			    right: 20px;
+			    padding-left: 30px;
+			    padding-right: 15px;
+			}
+    
+			.menu{
+				width: 100%;
+				min-width: 0px;
+				height: 70px;
+				top: 0;
+				position: fixed;
+			}
+			.menu .tinbuscar{
+				padding-left: 0;
+				margin-right: 0;
+				margin-top: 0px;
+			}
+			.menu .binicio{
+				line-height: 0;
+				width: auto;
+				padding-left: 0px;
+				padding-right: 0px;
+				padding-top: 25px;
+    			padding-bottom: 25px;
+			}
+			
+			.menu .wlogo img{
+				max-height: 40px;
+			}
+			.tinbuscar input{
+				display: list-item;
+				padding: 4px;
+				padding-left: 40px;
+			}
+			.rama{
+				width: 96%;
+				display: block!important;
+			    padding-bottom: 0;
+			    background-size: cover!important;
+			    background-position: center!important;
+			}
+			#principal, .principal{
+				width: 100%;
+				margin-top: 80px;
+			}
+			.piedepagina .z{
+				width: 100%;
+				text-align: center;
+			}
+			.rama .subramas{
+				display: block;
+				max-width: initial;
+				width: 100%;
+				border-radius: 5px;
+				margin: 0;
+				margin-top: 4px;
+				border: none;
+			}
+			.rama .subramas .c{
+				width: 100%;
+				padding-bottom: 0;
+			}
+			.rama .subramas .c .subb .fruto{
+				margin-bottom: 0;
+			}
+			
+			.principal img{
+				height: 100%;
+			}
+			.rama .b .subb .fruto{
+				width: 260px;
+				padding: 0px;
+				margin: 3px;
+			}
+			.arbol .seguidos{
+				text-align: left;
+			}
+			.rama .a .storelogo{
+				padding-top: 3%;
+			}
+			.subramas .storelogo, .rama .a .storelogo{
+				width: 100%;
+			    margin-left: auto;
+			    margin-right: auto;
+			    padding-top: 8px;
+			    padding-bottom: 8px;
+			}
+			.subramas .storelogo .storelogoa{
+				width: 30%;
+				margin-top: 0;
+			}
+			.rama .a .storelogo .storelogoa{
+				width: 30%;
+			}
+			.storelogo p{
+				
+			}
+			.storelogo h2{
+				padding: 0;
+    			margin: 0;
+			}
+			.arbol .seguidos .fmore{
+				font-size: 1em;
+				padding-top: 15px; padding-bottom: 15px;
+				margin-bottom: 2px;
+				margin-right: 2px;
+			}
+			.principal{
+				border-radius: 10px;
+    			overflow: hidden;
+    			background: #fff;
+    			width: 96%;
+			    margin-left: auto;
+			    margin-top: 80px!important;
+			    margin-right: auto;
+			}
+			.principal .slick-prev{
+				margin-left: 5%;
+			}
+			.principal .slick-next{
+				margin-right: 5%;
+				right: 20px;
+			}
+			.menu .binicio .partner span{
+				display: none;
+			}
+			.menu .binicio .partner{
+				height: 100%;
+			    padding-left: 0;
+			    padding-right: 0;
+			    background: none;
+			}
+			.menu .binicio .partner:before{
+				margin-right: 0;
+			}
+			/*.plugin_cuenta{
+				width: 100%;
+				border: 0;
+			}*/
+		}
+		@media only screen and (max-height: 600px) {
+			.menu{
+				position: absolute;
+				width: 100%;
+				min-width: 0px;
+				height: 70px;
+				top: 0;
+			}
+			.principal{	
+				margin-top: 60px;
+			}
+			.principal .slick-prev{
+				left: 30px;
+			}
+			.menu .binicio{
+				line-height: 30px;
+				width: auto;
+				padding-left: 10px;
+				padding-right: 5px;
+				font-size: 0.8em;
+			}
+
+			.menu .wlogo img{
+				max-height: 40px;
+			}
+			.tinbuscar input{
+				padding-left: 40px;
+			}
+			.rama .a{
+				min-width: 280px;
+			}
+
+		}
+
+		/* Efectos */
+		.botonta{
+			transition: all ease 0.5s;
+			transition: all ease 0.5s;
+			overflow: hidden;
+			position: relative;
+	display: block;
+		}
+		.botonta:after,
+		.botonta:before{
+			width: 80px;
+			height: 200px;
+			content: '';
+			display: block;
+			background: rgba(21, 21, 21, 0.5);
+			transform: rotate(45deg);
+			top: -60px;
+			position: absolute;
+			transition: none;
+			right:-45%;
+			cursor: pointer;
+		}
+		.botonta:before{
+			left: -48%;
+		}
+		.botonta:hover{
+
+		} 
+		.botonta:hover:after,
+		.botonta:hover:before{
+			transform: rotate(45deg), scaleX(130%);
+			background: rgba(255,255,255,0.1);
+			transition: all ease 0.5s;
+		}	 
+		.botonta:hover:after{
+			right: 130%;
+		}
+		.botonta:hover:before{
+			left: 130%;
+		}
+
+
+
+		.arbol .seguidos .degradado, .degradado{
+			background: rgba(203,96,179,1);
+background: -moz-linear-gradient(-45deg, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 32%, rgba(168,0,119,1) 67%, rgba(219,54,164,1) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(203,96,179,1)), color-stop(32%, rgba(193,70,161,1)), color-stop(67%, rgba(168,0,119,1)), color-stop(100%, rgba(219,54,164,1)));
+background: -webkit-linear-gradient(-45deg, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 32%, rgba(168,0,119,1) 67%, rgba(219,54,164,1) 100%);
+background: -o-linear-gradient(-45deg, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 32%, rgba(168,0,119,1) 67%, rgba(219,54,164,1) 100%);
+background: -ms-linear-gradient(-45deg, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 32%, rgba(168,0,119,1) 67%, rgba(219,54,164,1) 100%);
+background: linear-gradient(135deg, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 32%, rgba(168,0,119,1) 67%, rgba(219,54,164,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb60b3', endColorstr='#db36a4', GradientType=1 );
+		}
+		.subramas .storelogo h2{
+			margin: 0!important;
+		}
+		.subramas .storelogo p{
+			text-align: justify;
+			padding-left: 5px; padding-right: 5px;
+			box-sizing: border-box;
+		}
+
+
+		
+		#p_navegation_a{
+			background: rgba(73,155,234,1);
+			background: -moz-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+			background: -webkit-gradient(left top, right top, color-stop(0%, rgba(73,155,234,1)), color-stop(100%, rgba(32,124,229,1)));
+			background: -webkit-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+			background: -o-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+			background: -ms-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+			background: linear-gradient(to right, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5', GradientType=1 );
+		}
+		#p_navegation_b{
+			background: rgba(169,3,41,1);
+			background: -moz-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+			background: -webkit-gradient(left top, right top, color-stop(0%, rgba(169,3,41,1)), color-stop(44%, rgba(143,2,34,1)), color-stop(100%, rgba(109,0,25,1)));
+			background: -webkit-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+			background: -o-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+			background: -ms-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+			background: linear-gradient(to right, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=1 );
+		}
+		#p_navegation_c{
+			background: rgba(255,175,75,1);
+			background: -moz-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+			background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,175,75,1)), color-stop(100%, rgba(255,146,10,1)));
+			background: -webkit-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+			background: -o-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+			background: -ms-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+			background: linear-gradient(to right, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a', GradientType=1 );
+		}
+		#p_navegation_d{
+			background: rgba(255,93,177,1);
+			background: -moz-linear-gradient(left, rgba(255,93,177,1) 0%, rgba(239,1,124,1) 100%);
+			background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,93,177,1)), color-stop(100%, rgba(239,1,124,1)));
+			background: -webkit-linear-gradient(left, rgba(255,93,177,1) 0%, rgba(239,1,124,1) 100%);
+			background: -o-linear-gradient(left, rgba(255,93,177,1) 0%, rgba(239,1,124,1) 100%);
+			background: -ms-linear-gradient(left, rgba(255,93,177,1) 0%, rgba(239,1,124,1) 100%);
+			background: linear-gradient(to right, rgba(255,93,177,1) 0%, rgba(239,1,124,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5db1', endColorstr='#ef017c', GradientType=1 );
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="menu">
+		<div class="wlogo"><img src="homelogo.png"></div>
+		
+		<div class="tinbuscar"><input type="text" required placeholder="Realizar una búsqueda..." name="" /><span class="tinbuscarbackup"></span></div>
+		<div class="binicio"><div class="partner"><span>PERFIL</span></div></div>
+	</div>
+	<!-- <div class="principal" style="background: #000; background: url(portada2.jpg);background-size: 100% auto;background-position: center;"> -->
+	<div class="principal">
+		<div class="pa"><img src="portada5.jpg" /></div>
+		<div class="pa"><img src="portada4.jpg" /></div>
+		<div class="pa"><img src="portada3.jpg" /></div>
+		<div class="pa"><img src="portada2.jpg" /></div>
+		<div class="pa"><img src="portada.jpg" /></div>
+		<!--<img style="width: 100%; max-height: 600px; " src="portada2.jpg"> -->
+		<!-- <div> <video style=" z-index: 0;  width: 100%; opacity: 1;" autoplay="true" muted src="epic.mp4"></video></div> -->
+	</div>
+	
+	<div class="arbol">
+		<div class="seguidos">
+			
+			<!--<h2>Tiendas que sigues</h2> <p>Slide HERE</p> -->
+			<div class="fmore botonta degradado"><div class="deco"><img src="mariposa.svg"></div>Para ti</div>
+			<div class="fmore botonta"><div class="deco"><img src="mariposa.svg"></div>Publicaciones</div>
+			<div class="fmore botonta"><div class="deco"><img src="mariposa.svg"></div>Guardados</div>
+			<div class="fmore botonta"><div class="deco"><img src="mariposa.svg"></div>Decoración</div>
+			<div class="fmore botonta"><div class="deco"><img src="mariposa.svg"></div>Encontrar mas</div>
+		</div>
+		<div class="rama presentacion" id="rama1">
+			
+			<div class="a"><div class="storelogo"><img class="storelogoa" src="a.png">
+				<h2>CarnavalStore</h2><p>Diseño caribe alegre y tropical</p><p>|Camisetas y objetos de diseño|</p>
+				<div class="follow"><img align="middle" src="bell.svg">SIGUIENDO</div>
+			</div></div>
+			<div class="b">
+
+				<div class="subb">
+					
+						<div class="fruto">
+							<!-- Demo producto -->
+							<div class="producto">					
+								<img src="product1.jpg" />
+								<div class="subtitulo"><div class="proname">1 Black Blouse</div><div class="proprice">$60</div></div>
+							</div>
+						</div>
+					
+						<div class="fruto">
+							<div class="producto">				
+								<img src="product2.jpg" />
+								<div class="subtitulo"><div class="proname">2 Black Blouse</div><div class="proprice">$60</div></div>
+							</div>
+						</div>
+					
+						<div class="fruto">
+							<div class="producto">	
+								<img src="product3.jpg" />
+								<div class="subtitulo"><div class="proname">3 Black Blouse</div><div class="proprice">$60</div></div>
+							</div>
+						</div>
+					
+						<div class="fruto">
+							<div class="producto">
+								<img src="product1.jpg" />
+								<div class="subtitulo"><div class="proname">4 Black Blouse</div><div class="proprice">$60</div></div>
+							</div>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="rama presentacion" id="rama2">
+			<div class="a"><div class="storelogo"><img class="storelogoa" src="b.png"><h2>Todomono</h2><p>Diseño caribe alegre y tropical</p><p>|Camisetas y objetos de diseño|</p>
+<div class="follow"><img align="middle" src="bell.svg">Seguir</div>
+			</div>
+			
+		</div>
+			<div class="b">
+				<div class="subb">
+					<div class="fruto">
+						<!-- Demo producto -->
+						<div class="producto">					
+							<img src="product1.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+					<div class="fruto">
+						<div class="producto">				
+							<img src="product2.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+					<div class="fruto">
+						<div class="producto">	
+							<img src="product3.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+					<div class="fruto">
+						<div class="producto">
+							<img src="product1.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rama">
+			<div class="subramas" id="rama3">
+				<div class="storelogo"><img class="storelogoa" src="a.png">
+					<h2 class="storename">CarnavalStore</h2><p>Diseño caribe alegre y tropical</p><p>|Camisetas y objetos de diseño|</p>
+					<div class="follow"><img align="middle" src="bell.svg">Seguir</div>
+				</div>
+				<div class="c">
+				<div class="subb">
+					<div class="fruto">
+						<!-- Demo producto -->
+						<div class="producto">					
+							<img src="product1.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+					<div class="fruto">
+						<div class="producto">				
+							<img src="product2.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+					<div class="fruto">
+						<div class="producto">	
+							<img src="product3.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+					<div class="fruto">
+						<div class="producto">
+							<img src="product1.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+				</div>
+				</div>
+		</div>
+			<div class="subramas" id="rama4"><div class="storelogo"><img class="storelogoa" src="b.png"><h2 class="storename">Todomono</h2><p>Diseño caribe alegre y tropical</p><p>|Camisetas y objetos de diseño|</p></div>
+			<div class="follow"><img align="middle" src="bell.svg">Seguir</div>
+			<div class="c">
+				<div class="subb">
+					<div class="fruto">
+						<!-- Demo producto -->
+						<div class="producto">					
+							<img src="product1.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+					<div class="fruto">
+						<div class="producto">				
+							<img src="product2.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+					<div class="fruto">
+						<div class="producto">	
+							<img src="product3.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+					<div class="fruto">
+						<div class="producto">
+							<img src="product1.jpg" />
+							<div class="subtitulo"><div class="proname">Black Blouse</div><div class="proprice">$60</div></div>
+						</div>
+					</div>
+				</div>
+				</div>
+		</div>
+
+		</div>
+		<div class="piedepagina">
+			
+			<div class="z">
+				<h3>Únete a Siracusa-Empresarial</h3>
+				<div class="unirse botonta"><div class="deco">;)</div>Empezar</div>
+			</div>
+			<div class="z">
+				<ul>
+					<li><span>¿Qué es siracusa?</span></li>
+					<li><span>Responsabilidades</span></li>
+					<li><span>Beneficios</span></li>
+					<li><span>Noticias</span></li>
+				</ul>
+				
+			</div>
+			<h2>Bacan</h2>
+			<p>© 2019 DanivasGroup. All Rights Reserved</p>
+		</div>
+		<!--<div class="plugin_cuenta">
+			<h2>Daniel vasquez</h2>
+			<p><b>Danivas</b> Danielwebmas@gmail.com</p>
+			<div class="bpls" id="p_navegation_a">Te ha gustado</div>
+			<div class="bpls" id="p_navegation_b">Historial</div>
+			<div class="bpls" id="p_navegation_c">Configuración</div>
+			<div class="bpls" id="p_navegation_d">Salir</div>
+
+			<!-- <div class="bpls">Te ha gustado</div>
+			<div class="bpls">Historial</div>
+			<div class="bpls">Configuración</div>
+			<div class="bpls">Salir</div>
+			<div class="bpls">Te ha gustado</div>
+			<div class="bpls">Historial</div>
+			<div class="bpls">Configuración</div>
+			<div class="bpls">Salir</div> 
+		</div> -->
+	</div>
+<!-- JAVASCRIPT PLUGGINS -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="slick/slick.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+    	$('.principal').slick({
+    		dots: true,
+  			adaptiveHeight: true
+    	});
+    	$('.principal img').show();
+        $('.subb').slick({
+    		dots: false,
+			speed: 300,
+			slidesToShow: 1,
+			centerMode: true,
+		 	variableWidth: true
+      	});
+      	$('.fruto').show();
+      	var timer1 = 0;
+      	$('.subb').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+		  	//console.log(currentSlide + " - " +nextSlide);
+		  	
+		  	if ($(event.target).parents('.presentacion').length > 0) {
+			  	if(nextSlide != 0){
+			  		clearTimeout(timer1);
+			  		timer1 = 0;
+			  		$(event.target).parents('.presentacion').addClass("minimizar");
+			  	}else{
+			  		timer1 = setTimeout(function() {
+					  $(event.target).parents('.presentacion').removeClass("minimizar");
+					  timer1 = 0;
+					}, 1500);
+			  		
+			  	}
+		  	}
+		});
+		/*/ var container = $(".tinbuscar input");
+      	$(document).mouseup(function(e) 
+		{
+		    if (!container.is(e.target) && container.has(e.target).length === 0) 
+		    {
+		        $('.tinbuscar').removeClass("tinbuscarbackup");
+		    }
+		});
+		$('.tinbuscar input').on('click',function(){ $('.tinbuscar').addClass("tinbuscarbackup"); });/*/
+    });
+  </script>
+  <script type="text/javascript">
+  		$( window ).scroll(function() {
+  			var scroll = $(window).scrollTop();
+  			if(scroll > 47){
+  				 $(".menu").addClass("fijar");
+  			}else{
+  				$(".menu").removeClass("fijar");
+  				
+  			}
+		});
+
+  </script>
+
+</body>
+</html>

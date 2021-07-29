@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Siracusa</title>
+	
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			font-family: Segoe UI,Arial;
+			padding-bottom: 100px;
+			background: #eee;
+			position: absolute;
+		    width: 100%;
+		    top: 0;
+		    left: 0;
+		    background: url(backa.jpg);
+		    background-size: cover;
+		    background-repeat: no-repeat;
+		    background-position-x: center;
+		    background-position-y: top;
+		}
+		.menu{
+			position: absolute;
+			top: 47px;
+			left:0;
+			background: #fff;
+			width: 70%;
+			height: 80px;
+			min-width: 830px;
+			padding: 0;
+			z-index: 2;
+		}
+		.menu .binicio{
+			float: left;
+			width: 120px;
+			height: 80px;
+			line-height: 80px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.menu .tinbuscar{
+			float: left;
+			margin-right: 10px;
+			width: 100%;
+			min-width: 200px;
+			max-width: 480px;
+			height: 80px;
+			line-height: 80px;
+			text-align: left;
+			padding-left: 10px;
+		}
+		.tinbuscar input{
+			display: inline-block;
+			width: 100%;
+			height: 80%;
+			padding: 0;
+			background: #D9D9D9;
+			border: none;
+			padding: 20px;
+			box-sizing: border-box;
+			font-size: 1.1em;
+			color: #707070;
+		}
+		.menu .wlogo{
+			float: left;
+			height: 80px;
+			width: 200px;
+			border: none;
+			line-height: 80px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.menu .wlogo img{
+			max-height: 80px;
+		}
+		.principal{
+			width: 100%;
+			
+		}
+		.arbol{
+			width: 100%;
+		    max-width: 400px;
+		    margin-left: auto;
+		    margin-right: auto;
+		    margin-top: 130px;
+		    text-align: center;
+		    background: #fff;
+		    padding: 50px;
+		    box-sizing: border-box;
+		}
+		.arbol h3{
+			font-weight:200;
+			font-size: 2em;
+		}
+		.arbol input{
+			width: 95%;
+			border: 0;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-top: 20px;
+			padding-bottom: 15px;
+			margin-top: 10px;
+			font-size: 0.9em;
+			color: #111;
+			box-sizing: border-box;
+			border-bottom: solid 2px #aeaeae;
+		}
+		.arbol input:focus{
+			outline: none!important;
+		}
+		.arbol .bregistrarse{
+			width: 100%;
+			border:solid 1px #ff5722;
+			padding: 15px;
+			margin-top: 10px;
+			border-radius: 5px;
+			font-size: 0.9em;
+			color: #fff;
+			box-sizing: border-box;
+			cursor: pointer;
+			letter-spacing: 1px;
+			background: #ff5722;
+			font-weight: bolder;
+		}
+		.recordar{
+			padding: 15px;
+			padding-bottom: 0px;
+		}
+		.recordar img{
+			cursor: pointer;
+		}
+		.loguear{
+			padding: 20px;
+			border: solid 2px #9c27b0;
+			display: inline-block;
+			cursor: pointer;
+			color: #9c27b0;
+			font-weight: bolder;
+			margin-top: 10px;
+		}
+		.loguear:hover{
+			text-decoration: underline;
+		}
+		.piedepagina{
+			width: 100%;
+			position: absolute;
+			box-sizing: border-box;
+			background: #fff;
+			text-align: center;
+			padding-bottom: 50px;
+			padding-top: 50px;
+		}
+		.piedepagina h2,h3{
+			font-weight: 200;
+			font-size: 3em;
+			margin-bottom: 5px;
+			margin-top: 15px;
+			letter-spacing: 3px;
+			color: #1c1c1c;
+		}
+		.piedepagina h3{
+			font-size: 2em;
+		}
+		.piedepagina .z{
+			width: 49.5%;
+			display: inline-block;
+			box-sizing: content-box;
+			margin: 0;
+		}
+		.piedepagina .unirse{
+			background: #eee;
+		    border: solid 1px #717171;
+		    padding: 20px;
+		    max-width: 300px;
+		    margin-right: auto;
+		    margin-left: auto;
+		    cursor: pointer;
+		    margin-top: 30px;
+		    margin-bottom: 30px;
+		}
+		.piedepagina .unirse:hover{
+			border-color: #515151;
+			background: #ddd;
+		}
+		.piedepagina .z span{
+			cursor: pointer;
+			margin: 5px;
+			display: inline-block;
+			font-weight: 200;
+			font-size: 1.3em;
+
+		}
+		.piedepagina ul{
+			list-style-type: none;
+		    display: inline-block;
+		    margin-left: auto;
+		    margin-right: auto;
+		    padding-left: 0;
+		}
+		.piedepagina li{
+			text-align: left;
+		}
+		.piedepagina h3{
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+		.piedepagina .z span::after { content: '\A'; white-space: pre;}
+		.piedepagina .z span:hover{
+			text-decoration: underline;
+		}
+		.arbol button{
+			width: 100%;
+			border:solid 1px #9c27b0;
+			padding: 15px;
+			margin-top: 10px;
+			border-radius: 5px;
+			font-size: 0.9em;
+			color: #fff;
+			box-sizing: border-box;
+			cursor: pointer;
+			letter-spacing: 1px;
+			background: #9c27b0;
+			font-weight: bolder;
+		}
+		.registrar{
+			padding: 20px;
+			border: solid 2px #ff5722;
+			display: inline-block;
+			cursor: pointer;
+			color: #ff5722;
+			font-weight: bolder;
+			margin-top: 10px;
+		}
+		.registrar:hover{
+			text-decoration: underline;
+		}
+		@media only screen and (max-width: 600px) {
+			.menu{
+				width: 100%;
+				min-width: 0px;
+				height: 60px;
+				top: 0;
+			}
+			.menu .binicio{
+				line-height: 60px;
+				width: auto;
+				padding-left: 10px;
+				padding-right: 5px;
+			}
+			.menu .wlogo img{
+				max-height: 60px;
+			}
+			.tinbuscar input{
+				display: list-item;
+				padding: 4px;
+			}
+			.rama{
+				width: 100%;
+				padding-bottom: 100%;
+			}
+			.principal{
+				width: 100%;
+				margin-top: 60px;
+			}
+			.piedepagina .z{
+				width: 100%;
+				text-align: center;
+			}
+			.rama .subramas{
+				max-width: initial;
+				width: 100%;
+			}
+			.rama .subramas .c{
+				width: 100%;
+				position: absolute;
+			}
+			.principal img{
+				height: 100%;
+			}
+
+		}
+		@media only screen and (max-height: 600px) {
+			.menu{
+				position: absolute;
+				width: 100%;
+				min-width: 0px;
+				height: 60px;
+				top: 0;
+			}
+			.principal{
+				width: 100%;
+				margin-top: 60px;
+			}
+			.menu .binicio{
+				line-height: 60px;
+				width: auto;
+				padding-left: 10px;
+				padding-right: 5px;
+			}
+			.menu .wlogo img{
+				max-height: 60px;
+			}
+			.tinbuscar input{
+				display: list-item;
+				padding: 4px;
+			}
+		}
+		/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-family: 0.8em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #d9d9d9;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+	</style>
+</head>
+<body>
+		
+
+
+	<div class="arbol">
+		<div class="wlogo"><a href="inicio.html"><img src="logo-top.png"></a></div>
+		<h3>Registro</h3>
+		<input type="text" placeholder="Usuario" name="">
+		<input type="text" placeholder="Nombre" name="">
+		<input type="text" placeholder="Apellido" name="">
+		<input type="text" placeholder="Correo electrónico" name="">
+		<input type="password" placeholder="Contraseña" name="">
+		<input type="password" placeholder="Confirmar contraseña" name="">
+		<button class="bregistrarse">Registrarse</button>
+		<div class="recordar">
+			<label class="container">Acepto los terminos y condiciones
+			  <input type="checkbox" checked="checked">
+			  <span class="checkmark"></span>
+			</label>
+		</div>
+		<a href="login.html"><div class="loguear">
+			Ingresar a tu cuenta
+		</div></a>
+	</div>
+	<div class="piedepagina">
+			
+			<div class="z">
+				<h3>Únete a Siracusa-Empresarial</h3>
+				<div class="unirse">Empezar ;)</div>
+			</div>
+			<div class="z">
+				<ul>
+					<li><span>¿Qué es siracusa?</span></li>
+					<li><span>Responsabilidades</span></li>
+					<li><span>Beneficios</span></li>
+					<li><span>Noticias</span></li>
+				</ul>
+				
+			</div>
+			<h2>Siracusa</h2>
+			<p>© 2019 DanivasGroup. All Rights Reserved</p>
+		</div>
+</body>
+</html>
