@@ -5,8 +5,8 @@ Este sitio lo venia pensando desarrollar mas adelante y esto por ahora es solo e
 
 # DEMO
 
-h<a href="https://danivas13.github.io/FrontEnd---proyecto-personal/Siracusa/inicio.html" target="_blank">
-ttps://danivas13.github.io/FrontEnd---proyecto-personal/Siracusa/inicio.html
+<a href="https://danivas13.github.io/FrontEnd---proyecto-personal/Siracusa/inicio.html" target="_blank">
+Ir al demo en github pages
 </a>
 
 <img src="demo.png" />
